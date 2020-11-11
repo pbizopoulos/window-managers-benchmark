@@ -1,0 +1,175 @@
+name: x-window-managers-benchmark
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+  push:
+    paths:
+      - '.github/workflows/x-window-managers-benchmark.yml'
+  pull_request:
+    paths:
+      - '.github/workflows/x-window-managers-benchmark.yml'
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        wm:
+          - { name: 2bwm, url: "https://github.com/venam/2bwm", dependencies: libxcb-randr0-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xrm-dev, premake: "", postmake: }
+          - { name: 9wm, url: "https://github.com/9wm/9wm", dependencies: "", premake: "", postmake: }
+          - { name: antiwm, url: "https://github.com/ivoarch/antiwm", dependencies: "", premake: "", postmake: }
+          - { name: berry, url: "https://github.com/JLErvin/berry", dependencies: libxinerama-dev libxft-dev, premake: "", postmake: }
+          - { name: bspwm, url: "https://github.com/baskerville/bspwm", dependencies: libxcb-randr0-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-util-dev libxcb-shape0-dev libxcb-xinerama0-dev, premake: "", postmake: }
+          - { name: calavera-wm, url: "https://github.com/ivoarch/calavera-wm", dependencies: "", premake: "", postmake: }
+          - { name: catwm, url: "https://github.com/pyknite/catwm", dependencies: "", premake: "", postmake: }
+          - { name: cswm, url: "https://github.com/csimons/cswm", dependencies: "", premake: "", postmake: }
+          - { name: dminiwm, url: "https://github.com/moetunes/dminiwm", dependencies: "", premake: mv dminiwm/config.h.def dminiwm/config.h , postmake: }
+          - { name: dwm, url: "https://git.suckless.org/dwm", dependencies: libxinerama-dev, premake: "", postmake: }
+          - { name: echinus, url: "https://github.com/polachok/echinus", dependencies: libxrandr-dev, premake: "", postmake: }
+          - { name: frankenwm, url: "https://github.com/sulami/frankenwm", dependencies: libxcb-util-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev, premake: "", postmake: }
+          - { name: fsx11wm, url: "https://github.com/pbizopoulos/fsx11wm", dependencies: "", premake: "", postmake: }
+          - { name: fsxcbwm, url: "https://github.com/pbizopoulos/fsxcbwm", dependencies: libxcb-keysyms1-dev, premake: "", postmake: }
+          - { name: goomwwm, url: "https://github.com/seanpringle/goomwwm", dependencies: libxinerama-dev, premake: "", postmake: }
+          - { name: matwm2, url: "https://github.com/segin/matwm2", dependencies: libxinerama-dev, premake: cd matwm2/ && ./configure , postmake: }
+          - { name: maxwelm, url: "https://github.com/zsisco/maxwelm", dependencies: "", premake: "", postmake: }
+          - { name: mcwm, url: "https://github.com/mchackorg/mcwm", dependencies: libxcb-util-dev libxcb-randr0-dev libxcb-keysyms1-dev libxcb-icccm4-dev, premake: "", postmake: }
+          - { name: mimicwm, url: "https://github.com/Aaron-Mann/mimicwm", dependencies: libxinerama-dev, premake: "", postmake: }
+          - { name: monsterwm, url: "https://github.com/c00kiemon5ter/monsterwm", dependencies: "", premake: "", postmake: }
+          - { name: ntwm, url: "https://github.com/Cubified/ntwm", dependencies: libxrandr-dev, premake: "", postmake: }
+          - { name: ratpoison, url: "https://git.savannah.nongnu.org/git/ratpoison.git", dependencies: libxrandr-dev, premake: cd ratpoison && ./autogen.sh && ./configure , postmake: mv ratpoison/src/ratpoison ratpoison/ratpoison }
+          - { name: shod, url: "https://github.com/phillbush/shod", dependencies: libxpm-dev libxinerama-dev, premake: "", postmake: }
+          - { name: smallwm, url: "https://github.com/adamnew123456/SmallWM", dependencies: libxrandr-dev, premake: "", postmake: mv smallwm/bin/smallwm smallwm/smallwm }
+          - { name: sowm, url: "https://github.com/dylanaraps/sowm", dependencies: "", premake: "", postmake: }
+          - { name: swm, url: "https://github.com/dcat/swm", dependencies: "", premake: "", postmake: }
+          - { name: tinywm, url: "https://github.com/mackstann/tinywm", dependencies: "", premake: "", postmake: }
+          - { name: windowchef, url: "https://github.com/tudurom/windowchef", dependencies: libxcb-randr0-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev, premake: "", postmake: }
+          - { name: xoat, url: "https://github.com/seanpringle/xoat", dependencies: libxinerama-dev, premake: "", postmake: }
+    steps:
+      - name: Clone repo
+        run: git clone ${{ matrix.wm.url }} ${{ matrix.wm.name }}
+      - name: install prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install cloc smem ${{ matrix.wm.dependencies }}
+          sudo sysctl -w kernel.perf_event_paranoid=1
+      - name: premake
+        run: ${{ matrix.wm.premake }}
+      - name: start line
+        run: echo '<tr>' > results_wm
+      - name: get first and last commit date
+        run: |
+          echo '<td>' >> results_wm
+          echo '<a href="${{ matrix.wm.url }}">${{ matrix.wm.name }}</a>' >> results_wm
+          echo '</td>' >> results_wm
+          echo '<td>' >> results_wm
+          git --git-dir ${{ matrix.wm.name }}/.git log --format=%cs | tail -1 >> results_wm
+          echo '</td>' >> results_wm
+          echo '<td>' >> results_wm
+          git --git-dir ${{ matrix.wm.name }}/.git log --format=%cs | head -1 >> results_wm
+          echo '</td>' >> results_wm
+      - name: dependencies
+        run: |
+          echo '<td>' >> results_wm
+          echo ${{ matrix.wm.dependencies }} >> results_wm
+          echo '</td>' >> results_wm
+      - name: cloc
+        run: |
+          echo '<td>' >> results_wm
+          cloc --csv ${{ matrix.wm.name }} | tail -n 1 | awk -F ',' '{print $5}' >> results_wm
+          echo '</td>' >> results_wm
+      - name: perf stat
+        run: |
+          make -C ${{ matrix.wm.name }}
+          perf stat -r 10 --pre 'make -s -C ${{ matrix.wm.name }} clean' -d make -s -C ${{ matrix.wm.name }} 2>> results_perf_stat
+          echo '<td>' >> results_wm
+          grep task results_perf_stat | awk '{printf $1}' >> results_wm
+          echo '</td>' >> results_wm
+      - name: postmake
+        run: ${{ matrix.wm.postmake }}
+      - name: stat
+        run: |
+          echo '<td>' >> results_wm
+          stat -c %s ${{ matrix.wm.name }}/${{ matrix.wm.name }} | awk '{print $1/1024}' | awk '{printf("%.2f", $1)}' >> results_wm
+          echo '</td>' >> results_wm
+      - name: memory usage from smem
+        run: |
+          xvfb-run -a ./${{ matrix.wm.name }}/${{ matrix.wm.name }} &
+          sleep 10
+          smem -c "command uss pss rss" | grep ./${{ matrix.wm.name }}/${{ matrix.wm.name }} | grep -v grep >> results_smem
+      - name: memory usage results
+        run: |
+          echo '<td>' >> results_wm
+          awk '{print $2}' results_smem >> results_wm
+          echo '</td>' >> results_wm
+          echo '<td>' >> results_wm
+          awk '{print $3}' results_smem >> results_wm
+          echo '</td>' >> results_wm
+          echo '<td>' >> results_wm
+          awk '{print $4}' results_smem >> results_wm
+          echo '</td>' >> results_wm
+      - name: measure vsz
+        run: |
+          echo '<td>' >> results_wm
+          ps -o command,vsz | grep ./${{ matrix.wm.name }}/${{ matrix.wm.name }} | grep -v grep | grep -v bash | awk '{print $2}' >> results_wm
+          echo '</td>' >> results_wm
+      - name: end line
+        run: echo '</tr>' >> results_wm
+      - name: remove new lines
+        run: tr -d '\n' < results_wm > results-${{ matrix.wm.name }}
+      - name: add new line at the end
+        run: sed -i -e '$a\' results-${{ matrix.wm.name }}
+      - name: Upload results for ${{ matrix.wm.name }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: ./results-${{ matrix.wm.name }}
+  upload-index:
+    needs: [build]
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Download results
+        uses: actions/download-artifact@v2
+      - name: create index.html
+        run: |
+          echo '<!DOCTYPE><html><head><title>X Window Managers Benchmark</title><link rel="stylesheet" href="styles.css"></head>' > index.html
+          echo '<body>' >> index.html
+          echo '<h1>X Window Managers Benchmark</h1>' >> index.html
+          echo '<p>This repository presents a benchmark for X window managers and for each one the following actions are automatically performed monthly:</p>' >> index.html
+          echo '<ol>' >> index.html
+          echo '<li> <code>git clone repo</code> </li>' >> index.html
+          echo '<li> <code>sudo apt-get install benchmark-dependencies</code> </li>' >> index.html
+          echo '<li> <code>sudo apt-get install repository-dependencies</code> </li>' >> index.html
+          echo '<li> premake (required actions before calling make) </li>' >> index.html
+          echo '<li> <code>make</code> </li>' >> index.html
+          echo '</ol>' >> index.html
+          echo '<p>During the previous procedure multiple metrics are logged using the following commands:</p>' >> index.html
+          echo '<ul>' >> index.html
+          echo '<li> first commit date: <code>git log --format=%cs tail -1</code> </li>' >> index.html
+          echo '<li> last commit date: <code>git log --format=%cs head -1</code> </li>' >> index.html
+          echo '<li> source lines of code (sloc): <code>cloc .</code> </li>' >> index.html
+          echo '<li> make time: <code>perf stat -r 10 -d sudo make -s -C wm clean install</code> </li>' >> index.html
+          echo '<li> binary size: <code>stat -c %s wm</code> </li>' >> index.html
+          echo '<li> USS,PSS,RSS: <code>xvfb-run -a wm & sleep 10 && smem -c "command uss pss rss"</code> </li>' >> index.html
+          echo '<li> VSZ: <code>ps -o command,vsz</code> </li>' >> index.html
+          echo '</ul>' >> index.html
+          echo '<table>' >> index.html
+          echo '<tr><th>x window manager</th><th>first commit date</th><th>last commit date</th><th>dependencies</th><th>sloc</th><th>make time (msec)</th><th>binary size (K)</th><th>USS</th><th>PSS</th><th>RSS</th><th>VSZ</th></tr>' >> index.html
+          cat results/results-* >> index.html
+          echo '</table>' >> index.html
+          echo '<div id="correlogram"></div>' >> index.html
+          echo '<pre id="csvdata" hidden>' >> index.html
+          echo 'sloc,make time (msec),binary size (K),USS,PSS,RSS,VSZ' >> index.html
+          awk -F "</*td>|</*tr>" '/<\/*t[rd]>.*[A-Za-z]/ {print $11 "," $13 "," $15 "," $17 "," $19 "," $21 "," $23}' index.html | tail -n +2 >> index.html
+          echo '</pre>' >> index.html
+          echo '<script src="https://d3js.org/d3.v6.js"></script>' >> index.html
+          echo '<script src="script.js"></script>' >> index.html
+          echo '</body>' >> index.html
+          echo '</html>' >> index.html
+      - name: git commands
+        run: |
+          git add index.html
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "update index.html"
+          git push

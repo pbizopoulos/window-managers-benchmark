@@ -77,7 +77,7 @@ jobs:
       - name: perf stat
         run: |
           make -C ${{ matrix.wm.name }}
-          perf stat -r 10 --pre 'make -s -C ${{ matrix.wm.name }} clean' --post 'cat sha256sum ${{ matrix.wm.name }}/${{ matrix.wm.name }} >> checksums' -d make -s -C ${{ matrix.wm.name }} 2>> results_perf_stat
+          perf stat -r 10 --pre 'make -s -C ${{ matrix.wm.name }} clean' --post 'sha256sum ${{ matrix.wm.name }}/${{ matrix.wm.name }} >> checksums' -d make -s -C ${{ matrix.wm.name }} 2>> results_perf_stat
           echo '<td>' >> results_wm
           grep task results_perf_stat | awk '{printf $1}' >> results_wm
           echo '</td>' >> results_wm

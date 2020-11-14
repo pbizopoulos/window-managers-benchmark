@@ -14,33 +14,35 @@ jobs:
     strategy:
       matrix:
         wm:
-          - { name: 2bwm, url: "https://github.com/venam/2bwm", dependencies: libxcb-randr0-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xrm-dev, premake: ""}
-          - { name: 9wm, url: "https://github.com/9wm/9wm", dependencies: "", premake: ""}
-          - { name: antiwm, url: "https://github.com/ivoarch/antiwm", dependencies: "", premake: "" }
-          - { name: berry, url: "https://github.com/JLErvin/berry", dependencies: libxinerama-dev libxft-dev, premake: "" }
-          - { name: bspwm, url: "https://github.com/baskerville/bspwm", dependencies: libxcb-randr0-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-util-dev libxcb-shape0-dev libxcb-xinerama0-dev, premake: "" }
-          - { name: calavera-wm, url: "https://github.com/ivoarch/calavera-wm", dependencies: "", premake: "" }
-          - { name: catwm, url: "https://github.com/pyknite/catwm", dependencies: "", premake: "" }
-          - { name: cswm, url: "https://github.com/csimons/cswm", dependencies: "", premake: "" }
-          - { name: dminiwm, url: "https://github.com/moetunes/dminiwm", dependencies: "", premake: mv dminiwm/config.h.def dminiwm/config.h  }
-          - { name: dwm, url: "https://git.suckless.org/dwm", dependencies: libxinerama-dev, premake: "" }
-          - { name: echinus, url: "https://github.com/polachok/echinus", dependencies: libxrandr-dev, premake: "" }
-          - { name: frankenwm, url: "https://github.com/sulami/frankenwm", dependencies: libxcb-util-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev, premake: "" }
-          - { name: fsx11wm, url: "https://github.com/pbizopoulos/fsx11wm", dependencies: "", premake: "" }
-          - { name: fsxcbwm, url: "https://github.com/pbizopoulos/fsxcbwm", dependencies: libxcb-keysyms1-dev, premake: "" }
-          - { name: goomwwm, url: "https://github.com/seanpringle/goomwwm", dependencies: libxinerama-dev, premake: "" }
-          - { name: matwm2, url: "https://github.com/segin/matwm2", dependencies: libxinerama-dev, premake: cd matwm2/ && ./configure  }
-          - { name: maxwelm, url: "https://github.com/zsisco/maxwelm", dependencies: "", premake: "" }
-          - { name: mcwm, url: "https://github.com/mchackorg/mcwm", dependencies: libxcb-util-dev libxcb-randr0-dev libxcb-keysyms1-dev libxcb-icccm4-dev, premake: "" }
-          - { name: mimicwm, url: "https://github.com/Aaron-Mann/mimicwm", dependencies: libxinerama-dev, premake: "" }
-          - { name: monsterwm, url: "https://github.com/c00kiemon5ter/monsterwm", dependencies: "", premake: "" }
-          - { name: ntwm, url: "https://github.com/Cubified/ntwm", dependencies: libxrandr-dev, premake: "" }
-          - { name: shod, url: "https://github.com/phillbush/shod", dependencies: libxpm-dev libxinerama-dev, premake: "" }
-          - { name: sowm, url: "https://github.com/dylanaraps/sowm", dependencies: "", premake: "" }
-          - { name: swm, url: "https://github.com/dcat/swm", dependencies: "", premake: "" }
-          - { name: tinywm, url: "https://github.com/mackstann/tinywm", dependencies: "", premake: "" }
-          - { name: windowchef, url: "https://github.com/tudurom/windowchef", dependencies: libxcb-randr0-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev, premake: "" }
-          - { name: xoat, url: "https://github.com/seanpringle/xoat", dependencies: libxinerama-dev, premake: "" }
+          - { name: 2bwm, url: "https://github.com/venam/2bwm", dependencies: libxcb-randr0-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xrm-dev, premake: "", postmake: }
+          - { name: 9wm, url: "https://github.com/9wm/9wm", dependencies: "", premake: "", postmake: }
+          - { name: antiwm, url: "https://github.com/ivoarch/antiwm", dependencies: "", premake: "", postmake: }
+          - { name: berry, url: "https://github.com/JLErvin/berry", dependencies: libxinerama-dev libxft-dev, premake: "", postmake: }
+          - { name: bspwm, url: "https://github.com/baskerville/bspwm", dependencies: libxcb-randr0-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-util-dev libxcb-shape0-dev libxcb-xinerama0-dev, premake: "", postmake: }
+          - { name: calavera-wm, url: "https://github.com/ivoarch/calavera-wm", dependencies: "", premake: "", postmake: }
+          - { name: catwm, url: "https://github.com/pyknite/catwm", dependencies: "", premake: "", postmake: }
+          - { name: cswm, url: "https://github.com/csimons/cswm", dependencies: "", premake: "", postmake: }
+          - { name: dminiwm, url: "https://github.com/moetunes/dminiwm", dependencies: "", premake: mv dminiwm/config.h.def dminiwm/config.h , postmake: }
+          - { name: dwm, url: "https://git.suckless.org/dwm", dependencies: libxinerama-dev, premake: "", postmake: }
+          - { name: echinus, url: "https://github.com/polachok/echinus", dependencies: libxrandr-dev, premake: "", postmake: }
+          - { name: frankenwm, url: "https://github.com/sulami/frankenwm", dependencies: libxcb-util-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev, premake: "", postmake: }
+          - { name: fsx11wm, url: "https://github.com/pbizopoulos/fsx11wm", dependencies: "", premake: "", postmake: }
+          - { name: fsxcbwm, url: "https://github.com/pbizopoulos/fsxcbwm", dependencies: libxcb-keysyms1-dev, premake: "", postmake: }
+          - { name: goomwwm, url: "https://github.com/seanpringle/goomwwm", dependencies: libxinerama-dev, premake: "", postmake: }
+          - { name: matwm2, url: "https://github.com/segin/matwm2", dependencies: libxinerama-dev, premake: cd matwm2/ && ./configure , postmake: }
+          - { name: maxwelm, url: "https://github.com/zsisco/maxwelm", dependencies: "", premake: "", postmake: }
+          - { name: mcwm, url: "https://github.com/mchackorg/mcwm", dependencies: libxcb-util-dev libxcb-randr0-dev libxcb-keysyms1-dev libxcb-icccm4-dev, premake: "", postmake: }
+          - { name: mimicwm, url: "https://github.com/Aaron-Mann/mimicwm", dependencies: libxinerama-dev, premake: "", postmake: }
+          - { name: monsterwm, url: "https://github.com/c00kiemon5ter/monsterwm", dependencies: "", premake: "", postmake: }
+          - { name: ntwm, url: "https://github.com/Cubified/ntwm", dependencies: libxrandr-dev, premake: "", postmake: }
+          - { name: ratpoison, url: "https://git.savannah.nongnu.org/git/ratpoison.git", dependencies: libxrandr-dev, premake: cd ratpoison && ./autogen.sh && ./configure , postmake: mv ratpoison/src/ratpoison ratpoison/ratpoison }
+          - { name: shod, url: "https://github.com/phillbush/shod", dependencies: libxpm-dev libxinerama-dev, premake: "", postmake: }
+          - { name: smallwm, url: "https://github.com/adamnew123456/SmallWM", dependencies: libxrandr-dev, premake: "", postmake: mv smallwm/bin/smallwm smallwm/smallwm }
+          - { name: sowm, url: "https://github.com/dylanaraps/sowm", dependencies: "", premake: "", postmake: }
+          - { name: swm, url: "https://github.com/dcat/swm", dependencies: "", premake: "", postmake: }
+          - { name: tinywm, url: "https://github.com/mackstann/tinywm", dependencies: "", premake: "", postmake: }
+          - { name: windowchef, url: "https://github.com/tudurom/windowchef", dependencies: libxcb-randr0-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev, premake: "", postmake: }
+          - { name: xoat, url: "https://github.com/seanpringle/xoat", dependencies: libxinerama-dev, premake: "", postmake: }
     steps:
       - name: Clone repo
         run: git clone ${{ matrix.wm.url }} ${{ matrix.wm.name }}
@@ -77,10 +79,12 @@ jobs:
       - name: perf stat
         run: |
           make -C ${{ matrix.wm.name }}
-          perf stat -r 10 --pre 'make -s -C ${{ matrix.wm.name }} clean' --post 'sha256sum ${{ matrix.wm.name }}/${{ matrix.wm.name }} >> checksums' -d make -s -C ${{ matrix.wm.name }} 2>> results_perf_stat
+          perf stat -r 10 --pre 'make -s -C ${{ matrix.wm.name }} clean' -d make -s -C ${{ matrix.wm.name }} 2>> results_perf_stat
           echo '<td>' >> results_wm
           grep task results_perf_stat | awk '{printf $1}' >> results_wm
           echo '</td>' >> results_wm
+      - name: postmake
+        run: ${{ matrix.wm.postmake }}
       - name: stat
         run: |
           echo '<td>' >> results_wm
@@ -106,12 +110,6 @@ jobs:
         run: |
           echo '<td>' >> results_wm
           ps -o command,vsz | grep ./${{ matrix.wm.name }}/${{ matrix.wm.name }} | grep -v grep | grep -v bash | awk '{print $2}' >> results_wm
-          echo '</td>' >> results_wm
-      - name: reproducible
-        run: |
-          echo '<td>' >> results_wm
-          cat checksums
-          [ `uniq checksums | wc -l` -eq 1 ] && head -n1 checksums | cut -d' ' -f1 >> results_wm
           echo '</td>' >> results_wm
       - name: end line
         run: echo '</tr>' >> results_wm
@@ -154,10 +152,9 @@ jobs:
           echo '<li> binary size: <code>stat -c %s wm</code> </li>' >> index.html
           echo '<li> USS,PSS,RSS: <code>xvfb-run -a wm & sleep 10 && smem -c "command uss pss rss"</code> </li>' >> index.html
           echo '<li> VSZ: <code>ps -o command,vsz</code> </li>' >> index.html
-          echo '<li> sha256sum: <code>sha256sum binary</code> </li>' >> index.html
           echo '</ul>' >> index.html
           echo '<table>' >> index.html
-          echo '<tr><th>x window manager</th><th>first commit date</th><th>last commit date</th><th>dependencies</th><th>sloc</th><th>make time (msec)</th><th>binary size (K)</th><th>USS</th><th>PSS</th><th>RSS</th><th>VSZ</th><th>sha256sum</th></tr>' >> index.html
+          echo '<tr><th>x window manager</th><th>first commit date</th><th>last commit date</th><th>dependencies</th><th>sloc</th><th>make time (msec)</th><th>binary size (K)</th><th>USS</th><th>PSS</th><th>RSS</th><th>VSZ</th></tr>' >> index.html
           cat results/results-* >> index.html
           echo '</table>' >> index.html
           echo '<div id="correlogram"></div>' >> index.html

@@ -110,6 +110,7 @@ jobs:
       - name: reproducible
         run: |
           echo '<td>' >> results_wm
+          cat checksums
           [ `uniq checksums | wc -l` -eq 1 ] && head -n1 checksums | cut -d' ' -f1 >> results_wm
           echo '</td>' >> results_wm
       - name: end line
@@ -161,7 +162,7 @@ jobs:
           echo '</table>' >> index.html
           echo '<div id="correlogram"></div>' >> index.html
           echo '<pre id="csvdata" hidden>' >> index.html
-          echo 'sloc,make time (msec),binary size (K),USS,PSS,RSS,VSZ,sha256sum' >> index.html
+          echo 'sloc,make time (msec),binary size (K),USS,PSS,RSS,VSZ' >> index.html
           awk -F "</*td>|</*tr>" '/<\/*t[rd]>.*[A-Za-z]/ {print $11 "," $13 "," $15 "," $17 "," $19 "," $21 "," $23}' index.html | tail -n +2 >> index.html
           echo '</pre>' >> index.html
           echo '<script src="https://d3js.org/d3.v6.js"></script>' >> index.html

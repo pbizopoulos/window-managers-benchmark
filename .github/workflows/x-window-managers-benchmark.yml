@@ -27,7 +27,7 @@ jobs:
           - { name: echinus, url: "https://github.com/polachok/echinus", dependencies: libxrandr-dev, premake: "", postmake: }
           - { name: frankenwm, url: "https://github.com/sulami/frankenwm", dependencies: libxcb-util-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev, premake: "", postmake: }
           - { name: fsx11wm, url: "https://github.com/pbizopoulos/fsx11wm", dependencies: "", premake: "", postmake: }
-          - { name: fsxcbwm, url: "https://github.com/pbizopoulos/fsxcbwm", dependencies: libxcb-keysyms1-dev, premake: "", postmake: }
+          - { name: fsxcbwm, url: "https://github.com/pbizopoulos/fsxcbwm", dependencies: "", premake: "", postmake: }
           - { name: goomwwm, url: "https://github.com/seanpringle/goomwwm", dependencies: libxinerama-dev, premake: "", postmake: }
           - { name: matwm2, url: "https://github.com/segin/matwm2", dependencies: libxinerama-dev, premake: cd matwm2/ && ./configure , postmake: }
           - { name: maxwelm, url: "https://github.com/zsisco/maxwelm", dependencies: "", premake: "", postmake: }

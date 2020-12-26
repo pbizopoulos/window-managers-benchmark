@@ -112,7 +112,8 @@ jobs:
           ps -o command,vsz | grep ./${{ matrix.wm.name }}/${{ matrix.wm.name }} | grep -v grep | grep -v bash | awk '{print $2}' >> results_wm
           echo '</td>' >> results_wm
       - name: results from top
-        run: top -b -n 1 | grep ./${{ matrix.wm.name }}/${{ matrix.wm.name }} >> results_top
+        run: |
+          top -b -n 1 | grep ./${{ matrix.wm.name }}/${{ matrix.wm.name }} >> results_top
       - name: measure top
         run: |
           echo '<td>' >> results_wm

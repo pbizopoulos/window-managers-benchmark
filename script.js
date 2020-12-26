@@ -12,18 +12,16 @@ document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() =
 })));
 
 
-var marginWhole = {top: 10, right: 10, bottom: 10, left: 10},
-	sizeWhole = 640 - marginWhole.left - marginWhole.right
+var sizeWhole = 1000;
 var svg = d3.select("#correlogram")
 	.append("svg")
-	.attr("width", sizeWhole  + marginWhole.left + marginWhole.right)
-	.attr("height", sizeWhole  + marginWhole.top + marginWhole.bottom)
-	.append("g")
-	.attr("transform", "translate(" + marginWhole.left + "," + marginWhole.top + ")");
+	.attr("width", sizeWhole)
+	.attr("height", sizeWhole)
+	.append("g");
 var raw = d3.select("#csvdata").text();
 var data = d3.csvParse(raw);
 var allVar = data.columns;
-mar = 20
+margin = 20
 size = sizeWhole / allVar.length
 var position = d3.scalePoint()
 	.domain(allVar)
@@ -36,17 +34,17 @@ for (i in allVar){
 		xextent = d3.extent(data, function(d) { return +d[var1] })
 		var x = d3.scaleLinear()
 			.domain(xextent).nice()
-			.range([ 0, size-2*mar ]);
+			.range([ 0, size-2*margin ]);
 		yextent = d3.extent(data, function(d) { return +d[var2] })
 		var y = d3.scaleLinear()
 			.domain(yextent).nice()
-			.range([ size-2*mar, 0 ]);
+			.range([ size-2*margin, 0 ]);
 		var tmp = svg
 			.append('g')
-			.attr("transform", "translate(" + (position(var1)+mar) + "," + (position(var2)+mar) + ")");
+			.attr("transform", "translate(" + (position(var1)+margin) + "," + (position(var2)+margin) + ")");
 		if (j == 0) {
 			tmp.append("text")
-				.attr("x", 20)
+				.attr("x", 40)
 				.attr("y", -10)
 				.style("text-anchor", "middle")
 				.style("font-size", 10)
@@ -55,14 +53,14 @@ for (i in allVar){
 		if (i == allVar.length-1) {
 			tmp.append("text")
 				.attr("x", 25)
-				.attr("y", -60)
+				.attr("y", -80)
 				.attr("transform", "rotate(90)")
 				.style("text-anchor", "middle")
 				.style("font-size", 10)
 				.text(var2);
 		}
 		tmp.append("g")
-			.attr("transform", "translate(" + 0 + "," + (size-mar*2) + ")")
+			.attr("transform", "translate(" + 0 + "," + (size-margin*2) + ")")
 			.call(d3.axisBottom(x)
 				.ticks(3)
 				.tickFormat(d3.format(".0s")));
@@ -88,12 +86,12 @@ for (i in allVar){
 		xextent = d3.extent(data, function(d) { return +d[var1] })
 		var x = d3.scaleLinear()
 			.domain(xextent).nice()
-			.range([ 0, size-2*mar ]);
+			.range([ 0, size-2*margin ]);
 		var tmp = svg
 			.append('g')
-			.attr("transform", "translate(" + (position(var1)+mar) + "," + (position(var2)+mar) + ")");
+			.attr("transform", "translate(" + (position(var1)+margin) + "," + (position(var2)+margin) + ")");
 		tmp.append("g")
-			.attr("transform", "translate(" + 0 + "," + (size-mar*2) + ")")
+			.attr("transform", "translate(" + 0 + "," + (size-margin*2) + ")")
 			.call(d3.axisBottom(x)
 				.ticks(3)
 				.tickFormat(d3.format(".0s")));
@@ -103,7 +101,7 @@ for (i in allVar){
 			.thresholds(x.ticks(15));
 		var bins = histogram(data);
 		var y = d3.scaleLinear()
-			.range([ size-2*mar, 0 ])
+			.range([ size-2*margin, 0 ])
 			.domain([0, d3.max(bins, function(d) { return d.length; })]);
 		tmp.append('g')
 			.selectAll("rect")
@@ -113,6 +111,6 @@ for (i in allVar){
 			.attr("x", 1)
 			.attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
 			.attr("width", function(d) { return x(d.x1) - x(d.x0)  ; })
-			.attr("height", function(d) { return (size-2*mar) - y(d.length); })
+			.attr("height", function(d) { return (size-2*margin) - y(d.length); })
 	}
 }

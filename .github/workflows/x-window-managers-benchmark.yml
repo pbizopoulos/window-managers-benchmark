@@ -113,7 +113,7 @@ jobs:
           echo '</td>' >> results_wm
       - name: results from top
         run: |
-          top -b -n 1 | grep ${{ matrix.wm.name }} >> results_top
+          top -b -n 1
       - name: measure top
         run: |
           echo '<td>' >> results_wm

@@ -43,7 +43,7 @@ jobs:
           - { name: tinywm, url: "https://github.com/mackstann/tinywm", dependencies: "", premake: "", postmake: }
           - { name: windowchef, url: "https://github.com/tudurom/windowchef", dependencies: libxcb-randr0-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev, premake: "", postmake: }
           - { name: xoat, url: "https://github.com/seanpringle/xoat", dependencies: libxinerama-dev, premake: "", postmake: }
-          - { name: xwm, url: "https://github.com/mcpcpc/xwm", dependencies: libxcb-keysyms1-dev, premake: "", postmake: }
+          - { name: xwm, url: "https://github.com/mcpcpc/xwm", dependencies: libxcb-keysyms1-dev libxcb-randr0-dev, premake: "", postmake: }
     steps:
       - name: Clone repo
         run: git clone ${{ matrix.wm.url }} ${{ matrix.wm.name }}

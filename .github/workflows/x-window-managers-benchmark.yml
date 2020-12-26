@@ -49,7 +49,7 @@ jobs:
       - name: install prerequisites
         run: |
           sudo apt-get update
-          sudo apt-get install cloc top smem ${{ matrix.wm.dependencies }}
+          sudo apt-get install cloc procps smem ${{ matrix.wm.dependencies }}
           sudo sysctl -w kernel.perf_event_paranoid=1
       - name: premake
         run: ${{ matrix.wm.premake }}

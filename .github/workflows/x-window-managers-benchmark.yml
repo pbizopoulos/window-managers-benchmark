@@ -106,11 +106,6 @@ jobs:
           echo '<td>' >> results_wm
           awk '{print $4}' results_smem >> results_wm
           echo '</td>' >> results_wm
-      - name: measure vsz
-        run: |
-          echo '<td>' >> results_wm
-          ps -o command,vsz | grep ./${{ matrix.wm.name }}/${{ matrix.wm.name }} | grep -v grep | grep -v bash | awk '{print $2}' >> results_wm
-          echo '</td>' >> results_wm
       - name: results from top
         run: |
           top -b -n 1 -w256 | grep ${{ matrix.wm.name }} >> results_top
@@ -166,17 +161,16 @@ jobs:
           echo '<li> make time: <code>perf stat -r 10 -d sudo make -s -C wm clean install</code> </li>' >> index.html
           echo '<li> binary size: <code>stat -c %s wm</code> </li>' >> index.html
           echo '<li> USS,PSS,RSS: <code>xvfb-run -a wm & sleep 10 && smem -c "command uss pss rss"</code> </li>' >> index.html
-          echo '<li> VSZ: <code>ps -o command,vsz</code> </li>' >> index.html
           echo '<li> VIRT,RES,SHR: <code>top -b -n 1</code> </li>' >> index.html
           echo '</ul>' >> index.html
           echo '<table>' >> index.html
-          echo '<tr><th>x window manager</th><th>first commit date</th><th>last commit date</th><th>dependencies</th><th>sloc</th><th>make time (msec)</th><th>binary size (K)</th><th>USS</th><th>PSS</th><th>RSS</th><th>VSZ</th><th>VIRT</th><th>RES</th><th>SHR</th></tr>' >> index.html
+          echo '<tr><th>x window manager</th><th>first commit date</th><th>last commit date</th><th>dependencies</th><th>sloc</th><th>make time (msec)</th><th>binary size (K)</th><th>USS</th><th>PSS</th><th>RSS</th><th>VIRT</th><th>RES</th><th>SHR</th></tr>' >> index.html
           cat results/results-* >> index.html
           echo '</table>' >> index.html
           echo '<div id="correlogram"></div>' >> index.html
           echo '<pre id="csvdata" hidden>' >> index.html
-          echo 'sloc,make time (msec),binary size (K),USS,PSS,RSS,VSZ,VIRT,RES,SHR' >> index.html
-          awk -F "</*td>|</*tr>" '/<\/*t[rd]>.*[A-Za-z]/ {print $11 "," $13 "," $15 "," $17 "," $19 "," $21 "," $23}' index.html | tail -n +2 >> index.html
+          echo 'sloc,make time (msec),binary size (K),USS,PSS,RSS,VIRT,RES,SHR' >> index.html
+          awk -F "</*td>|</*tr>" '/<\/*t[rd]>.*[A-Za-z]/ {print $11 "," $13 "," $15 "," $17 "," $19 "," $21 "," $23 "," $25 "," $27 "," $29}' index.html | tail -n +2 >> index.html
           echo '</pre>' >> index.html
           echo '<script src="https://d3js.org/d3.v6.js"></script>' >> index.html
           echo '<script src="script.js"></script>' >> index.html

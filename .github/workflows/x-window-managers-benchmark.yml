@@ -43,7 +43,6 @@ jobs:
           - { name: tinywm, url: "https://github.com/mackstann/tinywm", dependencies: "", premake: "", postmake: }
           - { name: windowchef, url: "https://github.com/tudurom/windowchef", dependencies: libxcb-randr0-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev, premake: "", postmake: }
           - { name: xoat, url: "https://github.com/seanpringle/xoat", dependencies: libxinerama-dev, premake: "", postmake: }
-          - { name: xwm, url: "https://github.com/mcpcpc/xwm", dependencies: libxcb-keysyms1-dev libxcb-randr0-dev libxcb-util-dev, premake: "", postmake: }
     steps:
       - name: Clone repo
         run: git clone ${{ matrix.wm.url }} ${{ matrix.wm.name }}
@@ -150,7 +149,8 @@ jobs:
           echo '<!DOCTYPE><html><head><title>X Window Managers Benchmark</title><link rel="stylesheet" href="styles.css"></head>' > index.html
           echo '<body>' >> index.html
           echo '<h1>X Window Managers Benchmark</h1>' >> index.html
-          echo '<p>This repository presents a benchmark for X window managers and for each one the following actions are automatically performed monthly:</p>' >> index.html
+          echo '<p>This page is created by the <a href="https://github.com/pbizopoulos/x-window-managers-benchmark">x-window-managers-benchmark repository</a> and presents a benchmark for X window managers.</p>' >> index.html
+          echo '<p>For each window manager the following actions are automatically performed monthly:</p>' >> index.html
           echo '<ol>' >> index.html
           echo '<li> <code>git clone repo</code> </li>' >> index.html
           echo '<li> <code>sudo apt-get install benchmark-dependencies</code> </li>' >> index.html

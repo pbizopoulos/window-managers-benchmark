@@ -5,9 +5,8 @@ on:
   push:
     paths:
       - '.github/workflows/x-window-managers-benchmark.yml'
-  pull_request:
-    paths:
-      - '.github/workflows/x-window-managers-benchmark.yml'
+      - 'script.js'
+      - 'styles.css'
 jobs:
   build:
     runs-on: ubuntu-20.04

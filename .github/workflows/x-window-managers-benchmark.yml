@@ -25,6 +25,7 @@ jobs:
           - { name: dminiwm, url: "https://github.com/moetunes/dminiwm", dependencies: "", premake: mv dminiwm/config.h.def dminiwm/config.h , postmake: }
           - { name: dwm, url: "https://git.suckless.org/dwm", dependencies: libxinerama-dev, premake: "", postmake: }
           - { name: echinus, url: "https://github.com/polachok/echinus", dependencies: libxrandr-dev, premake: "", postmake: }
+          - { name: frankenwm, url: "https://github.com/sulami/frankenwm", dependencies: libxcb-util-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev, premake: "", postmake: }
           - { name: fsx11wm, url: "https://github.com/pbizopoulos/fsx11wm", dependencies: "", premake: "", postmake: }
           - { name: fsxcbwm, url: "https://github.com/pbizopoulos/fsxcbwm", dependencies: "", premake: "", postmake: }
           - { name: goomwwm, url: "https://github.com/seanpringle/goomwwm", dependencies: libxinerama-dev, premake: "", postmake: }
@@ -113,7 +114,7 @@ jobs:
           echo '</td>' >> results_wm
       - name: results from top
         run: |
-          top -b -n 1
+          top -b -n 1 -w256 | grep ${{ matrix.wm.name }} >> results_top
       - name: measure top
         run: |
           echo '<td>' >> results_wm

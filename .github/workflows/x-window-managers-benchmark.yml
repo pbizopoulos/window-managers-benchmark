@@ -25,7 +25,6 @@ jobs:
           - { name: dminiwm, url: "https://github.com/moetunes/dminiwm", dependencies: "", premake: mv dminiwm/config.h.def dminiwm/config.h , postmake: }
           - { name: dwm, url: "https://git.suckless.org/dwm", dependencies: libxinerama-dev, premake: "", postmake: }
           - { name: echinus, url: "https://github.com/polachok/echinus", dependencies: libxrandr-dev, premake: "", postmake: }
-          - { name: frankenwm, url: "https://github.com/sulami/frankenwm", dependencies: libxcb-util-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev, premake: "", postmake: }
           - { name: fsx11wm, url: "https://github.com/pbizopoulos/fsx11wm", dependencies: "", premake: "", postmake: }
           - { name: fsxcbwm, url: "https://github.com/pbizopoulos/fsxcbwm", dependencies: "", premake: "", postmake: }
           - { name: goomwwm, url: "https://github.com/seanpringle/goomwwm", dependencies: libxinerama-dev, premake: "", postmake: }
@@ -43,6 +42,7 @@ jobs:
           - { name: tinywm, url: "https://github.com/mackstann/tinywm", dependencies: "", premake: "", postmake: }
           - { name: windowchef, url: "https://github.com/tudurom/windowchef", dependencies: libxcb-randr0-dev libxcb-keysyms1-dev libxcb-ewmh-dev libxcb-icccm4-dev, premake: "", postmake: }
           - { name: xoat, url: "https://github.com/seanpringle/xoat", dependencies: libxinerama-dev, premake: "", postmake: }
+          - { name: xwm, url: "https://github.com/mcpcpc/xwm", dependencies: libxcb-keysyms1-dev, premake: "", postmake: }
     steps:
       - name: Clone repo
         run: git clone ${{ matrix.wm.url }} ${{ matrix.wm.name }}

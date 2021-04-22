@@ -139,12 +139,12 @@ jobs:
         uses: actions/download-artifact@v2
       - name: create index.html
         run: |
-          echo '<!DOCTYPE><html><head><title>X Window Managers Benchmark</title><link rel="stylesheet" href="styles.css"></head>' > index.html
+          echo '<!DOCTYPE html><html lang="en"><head><title>X Window Managers Benchmark</title><link rel="stylesheet" href="styles.css"></head>' > index.html
           echo '<body>' >> index.html
           echo '<h1>X Window Managers Benchmark</h1>' >> index.html
           echo "<p>This page is automatically updated each month using Github Actions/Runners <a href="https://github.com/pbizopoulos/x-window-managers-benchmark">[source]</a> (Last update: $(date)).</p>" >> index.html
           echo "<p>Github Runner system information (<code>uname -mrs</code>): $(uname -mrs)</p>" >> index.html
-          echo "<p>Github Runner total memory (<code>awk '/^Mem/ {print \$2}' <(free -h)</code>): $(awk '/^Mem/ {print $2}' <(free -h))</p>" >> index.html
+          echo "<p>Github Runner total memory (<code>awk '/^Mem/ {print \$2}' &lt;(free -h)</code>): $(awk '/^Mem/ {print $2}' &lt;(free -h))</p>" >> index.html
           echo '<p>For each window manager (wm) the following actions are performed:</p>' >> index.html
           echo '<ol>' >> index.html
           echo '<li> <code>sudo apt-get install benchmark-dependencies</code> </li>' >> index.html

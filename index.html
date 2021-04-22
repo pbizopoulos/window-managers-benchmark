@@ -1,11 +1,9 @@
 <!DOCTYPE html><html lang="en"><head><title>X Window Managers Benchmark</title><link rel="stylesheet" href="styles.css"></head>
 <body>
 <h1>X Window Managers Benchmark</h1>
-<p>This page is automatically updated each month using Github Actions/Runners <a href=https://github.com/pbizopoulos/x-window-managers-benchmark>[source]</a> (Last update: Thu Apr 22 15:28:22 UTC 2021).</p>
+<p>This page is automatically updated each month using Github Actions/Runners <a href=https://github.com/pbizopoulos/x-window-managers-benchmark>[source]</a> (Last update: Thu Apr 22 15:36:22 UTC 2021).</p>
 <p>Github Runner system information (<code>uname -mrs</code>): Linux 5.4.0-1046-azure x86_64</p>
-<p>Github Runner total memory (<code>awk '/^Mem/ {print $2}' &lt;(free -h)</code>):               total        used        free      shared  buff/cache   available
-Mem:          6.8Gi       465Mi       5.2Gi       6.0Mi       1.1Gi       6.0Gi
-Swap:         4.0Gi          0B       4.0Gi</p>
+<p>Github Runner total memory (<code>awk '/^Mem/ {print $2}' &lt;(free -h)</code>): 6.8Gi</p>
 <p>For each window manager (wm) the following actions are performed:</p>
 <ol>
 <li> <code>sudo apt-get install benchmark-dependencies</code> </li>
@@ -26,66 +24,66 @@ Swap:         4.0Gi          0B       4.0Gi</p>
 </ul>
 <table>
 <tr><th>x window manager</th><th>first commit date</th><th>last commit date</th><th>dependencies</th><th>sloc</th><th>make time (msec)</th><th>binary size (K)</th><th>USS</th><th>PSS</th><th>RSS</th><th>VIRT</th><th>RES</th><th>SHR</th></tr>
-<tr><td><a href="https://github.com/venam/2bwm">2bwm</a></td><td>2012-09-02</td><td>2020-09-30</td><td>libxcb-ewmh-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-xrm-dev</td><td>3369</td><td>937.28</td><td>48.35</td><td>500</td><td>582</td><td>2300</td><td>7192</td><td>988</td><td>828</td></tr>
-<tr><td><a href="https://github.com/9wm/9wm">9wm</a></td><td>2013-08-27</td><td>2018-04-10</td><td></td><td>2694</td><td>346.85</td><td>70.40</td><td>1244</td><td>1349</td><td>3148</td><td>6556</td><td>3140</td><td>2804</td></tr>
-<tr><td><a href="https://github.com/ivoarch/antiwm">antiwm</a></td><td>2013-03-11</td><td>2013-04-30</td><td></td><td>951</td><td>432.69</td><td>36.46</td><td>700</td><td>813</td><td>2760</td><td>4140</td><td>968</td><td>828</td></tr>
-<tr><td><a href="https://github.com/JLErvin/berry">berry</a></td><td>2018-07-31</td><td>2021-03-25</td><td>libxinerama-dev</td><td>2773</td><td>961.28</td><td>46.48</td><td>2972</td><td>3189</td><td>5836</td><td>10908</td><td>5772</td><td>4872</td></tr>
-<tr><td><a href="https://github.com/baskerville/bspwm">bspwm</a></td><td>2012-07-28</td><td>2021-04-17</td><td>libxcb-ewmh-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-shape0-dev libxcb-util-dev libxcb-xinerama0-dev</td><td>13476</td><td>1986.39</td><td>251.68</td><td>696</td><td>780</td><td>2620</td><td>5348</td><td>1004</td><td>824</td></tr>
-<tr><td><a href="https://github.com/ivoarch/calavera-wm">calavera-wm</a></td><td>2013-01-19</td><td>2013-12-05</td><td></td><td>1376</td><td>372.79</td><td>35.26</td><td>960</td><td>1078</td><td>2888</td><td>6316</td><td>2724</td><td>2456</td></tr>
-<tr><td><a href="https://github.com/pyknite/catwm">catwm</a></td><td>2010-02-14</td><td>2011-12-31</td><td></td><td>594</td><td>98.41</td><td>29.38</td><td>724</td><td>828</td><td>2616</td><td>4136</td><td>968</td><td>828</td></tr>
-<tr><td><a href="https://github.com/csimons/cswm">cswm</a></td><td>2007-02-12</td><td>2013-06-15</td><td></td><td>1116</td><td>534.07</td><td>26.78</td><td>976</td><td>1102</td><td>3224</td><td>9508</td><td>3224</td><td>2912</td></tr>
-<tr><td><a href="https://github.com/moetunes/dminiwm">dminiwm</a></td><td>2011-11-28</td><td>2014-12-25</td><td></td><td>1095</td><td>173.81</td><td>35.96</td><td>1052</td><td>1209</td><td>3492</td><td>9000</td><td>2752</td><td>2508</td></tr>
-<tr><td><a href="https://git.suckless.org/dwm">dwm</a></td><td>2006-07-10</td><td>2021-03-29</td><td>libxinerama-dev</td><td>2505</td><td>879.66</td><td>68.16</td><td>2900</td><td>3127</td><td>6100</td><td>13852</td><td>5980</td><td>5092</td></tr>
-<tr><td><a href="https://github.com/polachok/echinus">echinus</a></td><td>2007-11-15</td><td>2019-05-06</td><td>libxrandr-dev</td><td>3771</td><td>706.43</td><td>373.03</td><td>2948</td><td>3179</td><td>6124</td><td>14360</td><td>5564</td><td>4744</td></tr>
-<tr><td><a href="https://github.com/sulami/frankenwm">frankenwm</a></td><td>2011-09-12</td><td>2021-01-26</td><td>libxcb-ewmh-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-util-dev</td><td>3018</td><td>279.93</td><td>139.27</td><td>460</td><td>558</td><td>2432</td><td>6368</td><td>996</td><td>820</td></tr>
-<tr><td><a href="https://github.com/pbizopoulos/fswm">fswm</a></td><td>2021-03-02</td><td>2021-03-02</td><td></td><td>99</td><td>85.31</td><td>17.02</td><td>204</td><td>283</td><td>2000</td><td>2824</td><td>828</td><td>724</td></tr>
-<tr><td><a href="https://github.com/seanpringle/goomwwm">goomwwm</a></td><td>2012-06-18</td><td>2015-05-18</td><td>libxinerama-dev</td><td>5584</td><td>2320.79</td><td>131.53</td><td>1344</td><td>1545</td><td>4248</td><td>9816</td><td>4248</td><td>3764</td></tr>
-<tr><td><a href="https://github.com/segin/matwm2">matwm2</a></td><td>2010-04-19</td><td>2020-07-27</td><td>libxinerama-dev</td><td>5051</td><td>1152.04</td><td>128.41</td><td>1212</td><td>1413</td><td>4004</td><td>9740</td><td>3640</td><td>3256</td></tr>
-<tr><td><a href="https://github.com/zsisco/maxwelm">maxwelm</a></td><td>2016-06-14</td><td>2016-06-20</td><td></td><td>815</td><td>99.85</td><td>34.41</td><td>784</td><td>892</td><td>2712</td><td>4140</td><td>2648</td><td>2396</td></tr>
-<tr><td><a href="https://github.com/mchackorg/mcwm">mcwm</a></td><td>2010-06-18</td><td>2018-10-07</td><td>libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-util-dev</td><td>3704</td><td>375.89</td><td>99.19</td><td>396</td><td>481</td><td>2240</td><td>2996</td><td>844</td><td>704</td></tr>
-<tr><td><a href="https://github.com/Aaron-Mann/mimicwm">mimicwm</a></td><td>2020-10-23</td><td>2020-11-06</td><td>libxinerama-dev</td><td>776</td><td>546.75</td><td>35.45</td><td>860</td><td>968</td><td>2808</td><td>4244</td><td>2760</td><td>2500</td></tr>
-<tr><td><a href="https://github.com/c00kiemon5ter/monsterwm">monsterwm</a></td><td>2011-09-12</td><td>2012-12-16</td><td></td><td>875</td><td>438.14</td><td>31.79</td><td>776</td><td>880</td><td>2680</td><td>4140</td><td>972</td><td>828</td></tr>
-<tr><td><a href="https://github.com/Cubified/ntwm">ntwm</a></td><td>2018-04-04</td><td>2020-04-06</td><td>libxrandr-dev</td><td>1553</td><td>298.42</td><td>30.23</td><td>996</td><td>1104</td><td>2976</td><td>6444</td><td>2888</td><td>2596</td></tr>
-<tr><td><a href="https://git.savannah.nongnu.org/git/ratpoison.git">ratpoison</a></td><td>2000-08-25</td><td>2017-09-25</td><td>libxrandr-dev</td><td>35325</td><td>4812.74</td><td>1029.08</td><td>3068</td><td>3300</td><td>6260</td><td>13988</td><td>6184</td><td>5288</td></tr>
-<tr><td><a href="https://github.com/phillbush/shod">shod</a></td><td>2020-07-28</td><td>2021-04-05</td><td>libxinerama-dev libxpm-dev</td><td>3950</td><td>328.14</td><td>119.77</td><td>1496</td><td>1643</td><td>3832</td><td>13524</td><td>3832</td><td>3308</td></tr>
-<tr><td><a href="https://github.com/adamnew123456/SmallWM">smallwm</a></td><td>2011-03-13</td><td>2020-02-28</td><td>libxrandr-dev</td><td>12789</td><td>13682.05</td><td>3815.20</td><td>1432</td><td>1688</td><td>5176</td><td>10348</td><td>4704</td><td>4388</td></tr>
-<tr><td><a href="https://github.com/dylanaraps/sowm">sowm</a></td><td>2019-10-11</td><td>2020-10-21</td><td></td><td>423</td><td>187.77</td><td>27.53</td><td>940</td><td>1047</td><td>2832</td><td>6308</td><td>2648</td><td>2388</td></tr>
-<tr><td><a href="https://github.com/dcat/swm">swm</a></td><td>2014-11-11</td><td>2017-01-23</td><td></td><td>312</td><td>80.46</td><td>21.88</td><td>212</td><td>293</td><td>2024</td><td>2828</td><td>832</td><td>724</td></tr>
-<tr><td><a href="https://github.com/mackstann/tinywm">tinywm</a></td><td>2011-11-27</td><td>2014-04-22</td><td></td><td>115</td><td>67.17</td><td>16.66</td><td>676</td><td>781</td><td>2576</td><td>4128</td><td>968</td><td>824</td></tr>
-<tr><td><a href="https://github.com/tudurom/windowchef">windowchef</a></td><td>2016-09-02</td><td>2021-02-21</td><td>libxcb-ewmh-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-randr0-dev</td><td>4483</td><td>892.51</td><td>62.17</td><td>456</td><td>548</td><td>2552</td><td>4392</td><td>1124</td><td>972</td></tr>
-<tr><td><a href="https://github.com/seanpringle/xoat">xoat</a></td><td>2012-08-30</td><td>2016-06-30</td><td>libxinerama-dev</td><td>2450</td><td>1852.69</td><td>59.92</td><td>2688</td><td>2904</td><td>5680</td><td>10848</td><td>4692</td><td>3920</td></tr>
+<tr><td><a href="https://github.com/venam/2bwm">2bwm</a></td><td>2012-09-02</td><td>2020-09-30</td><td>libxcb-ewmh-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-xrm-dev</td><td>3369</td><td>868.75</td><td>48.35</td><td>504</td><td>596</td><td>2404</td><td>7192</td><td>996</td><td>832</td></tr>
+<tr><td><a href="https://github.com/9wm/9wm">9wm</a></td><td>2013-08-27</td><td>2018-04-10</td><td></td><td>2694</td><td>471.33</td><td>70.40</td><td>1232</td><td>1337</td><td>3136</td><td>6556</td><td>3128</td><td>2792</td></tr>
+<tr><td><a href="https://github.com/ivoarch/antiwm">antiwm</a></td><td>2013-03-11</td><td>2013-04-30</td><td></td><td>951</td><td>384.15</td><td>36.46</td><td>768</td><td>878</td><td>2628</td><td>4140</td><td>896</td><td>756</td></tr>
+<tr><td><a href="https://github.com/JLErvin/berry">berry</a></td><td>2018-07-31</td><td>2021-03-25</td><td>libxinerama-dev</td><td>2773</td><td>845.97</td><td>46.48</td><td>2944</td><td>3159</td><td>5832</td><td>11040</td><td>5820</td><td>4908</td></tr>
+<tr><td><a href="https://github.com/baskerville/bspwm">bspwm</a></td><td>2012-07-28</td><td>2021-04-17</td><td>libxcb-ewmh-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-shape0-dev libxcb-util-dev libxcb-xinerama0-dev</td><td>13476</td><td>2142.34</td><td>251.68</td><td>696</td><td>777</td><td>2496</td><td>5348</td><td>996</td><td>820</td></tr>
+<tr><td><a href="https://github.com/ivoarch/calavera-wm">calavera-wm</a></td><td>2013-01-19</td><td>2013-12-05</td><td></td><td>1376</td><td>464.80</td><td>35.26</td><td>876</td><td>986</td><td>2944</td><td>6316</td><td>2832</td><td>2564</td></tr>
+<tr><td><a href="https://github.com/pyknite/catwm">catwm</a></td><td>2010-02-14</td><td>2011-12-31</td><td></td><td>594</td><td>84.89</td><td>29.38</td><td>740</td><td>849</td><td>2720</td><td>4136</td><td>972</td><td>828</td></tr>
+<tr><td><a href="https://github.com/csimons/cswm">cswm</a></td><td>2007-02-12</td><td>2013-06-15</td><td></td><td>1116</td><td>517.40</td><td>26.78</td><td>976</td><td>1097</td><td>3052</td><td>9508</td><td>3052</td><td>2736</td></tr>
+<tr><td><a href="https://github.com/moetunes/dminiwm">dminiwm</a></td><td>2011-11-28</td><td>2014-12-25</td><td></td><td>1095</td><td>182.33</td><td>35.96</td><td>1080</td><td>1219</td><td>3436</td><td>9000</td><td>2624</td><td>2384</td></tr>
+<tr><td><a href="https://git.suckless.org/dwm">dwm</a></td><td>2006-07-10</td><td>2021-03-29</td><td>libxinerama-dev</td><td>2505</td><td>926.70</td><td>68.16</td><td>2956</td><td>3185</td><td>6144</td><td>13860</td><td>6020</td><td>5124</td></tr>
+<tr><td><a href="https://github.com/polachok/echinus">echinus</a></td><td>2007-11-15</td><td>2019-05-06</td><td>libxrandr-dev</td><td>3771</td><td>722.05</td><td>373.03</td><td>2892</td><td>3119</td><td>6076</td><td>14360</td><td>5580</td><td>4764</td></tr>
+<tr><td><a href="https://github.com/sulami/frankenwm">frankenwm</a></td><td>2011-09-12</td><td>2021-01-26</td><td>libxcb-ewmh-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-util-dev</td><td>3018</td><td>311.80</td><td>139.27</td><td>464</td><td>580</td><td>2652</td><td>6368</td><td>1064</td><td>884</td></tr>
+<tr><td><a href="https://github.com/pbizopoulos/fswm">fswm</a></td><td>2021-03-02</td><td>2021-03-02</td><td></td><td>99</td><td>90.90</td><td>17.02</td><td>208</td><td>290</td><td>2100</td><td>2824</td><td>832</td><td>724</td></tr>
+<tr><td><a href="https://github.com/seanpringle/goomwwm">goomwwm</a></td><td>2012-06-18</td><td>2015-05-18</td><td>libxinerama-dev</td><td>5584</td><td>2467.72</td><td>131.53</td><td>1392</td><td>1588</td><td>4232</td><td>9816</td><td>4232</td><td>3752</td></tr>
+<tr><td><a href="https://github.com/segin/matwm2">matwm2</a></td><td>2010-04-19</td><td>2020-07-27</td><td>libxinerama-dev</td><td>5051</td><td>1003.06</td><td>128.41</td><td>1256</td><td>1451</td><td>4028</td><td>9740</td><td>3696</td><td>3308</td></tr>
+<tr><td><a href="https://github.com/zsisco/maxwelm">maxwelm</a></td><td>2016-06-14</td><td>2016-06-20</td><td></td><td>815</td><td>117.21</td><td>34.41</td><td>748</td><td>857</td><td>2736</td><td>4140</td><td>2736</td><td>2484</td></tr>
+<tr><td><a href="https://github.com/mchackorg/mcwm">mcwm</a></td><td>2010-06-18</td><td>2018-10-07</td><td>libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-util-dev</td><td>3704</td><td>286.54</td><td>99.19</td><td>396</td><td>480</td><td>2280</td><td>2996</td><td>908</td><td>768</td></tr>
+<tr><td><a href="https://github.com/Aaron-Mann/mimicwm">mimicwm</a></td><td>2020-10-23</td><td>2020-11-06</td><td>libxinerama-dev</td><td>776</td><td>478.56</td><td>35.45</td><td>856</td><td>962</td><td>2804</td><td>4244</td><td>2752</td><td>2496</td></tr>
+<tr><td><a href="https://github.com/c00kiemon5ter/monsterwm">monsterwm</a></td><td>2011-09-12</td><td>2012-12-16</td><td></td><td>875</td><td>519.70</td><td>31.79</td><td>740</td><td>851</td><td>2728</td><td>4140</td><td>968</td><td>828</td></tr>
+<tr><td><a href="https://github.com/Cubified/ntwm">ntwm</a></td><td>2018-04-04</td><td>2020-04-06</td><td>libxrandr-dev</td><td>1553</td><td>375.35</td><td>30.23</td><td>1104</td><td>1208</td><td>2964</td><td>6444</td><td>2784</td><td>2488</td></tr>
+<tr><td><a href="https://git.savannah.nongnu.org/git/ratpoison.git">ratpoison</a></td><td>2000-08-25</td><td>2017-09-25</td><td>libxrandr-dev</td><td>35325</td><td>5049.69</td><td>1029.08</td><td>3000</td><td>3238</td><td>6348</td><td>13988</td><td>6288</td><td>5384</td></tr>
+<tr><td><a href="https://github.com/phillbush/shod">shod</a></td><td>2020-07-28</td><td>2021-04-05</td><td>libxinerama-dev libxpm-dev</td><td>3950</td><td>433.29</td><td>119.77</td><td>1492</td><td>1642</td><td>3912</td><td>13524</td><td>3912</td><td>3396</td></tr>
+<tr><td><a href="https://github.com/adamnew123456/SmallWM">smallwm</a></td><td>2011-03-13</td><td>2020-02-28</td><td>libxrandr-dev</td><td>12789</td><td>11369.02</td><td>3815.20</td><td>1444</td><td>1714</td><td>5236</td><td>10348</td><td>4716</td><td>4404</td></tr>
+<tr><td><a href="https://github.com/dylanaraps/sowm">sowm</a></td><td>2019-10-11</td><td>2020-10-21</td><td></td><td>423</td><td>177.73</td><td>27.53</td><td>864</td><td>971</td><td>2812</td><td>6308</td><td>2724</td><td>2464</td></tr>
+<tr><td><a href="https://github.com/dcat/swm">swm</a></td><td>2014-11-11</td><td>2017-01-23</td><td></td><td>312</td><td>70.87</td><td>21.88</td><td>208</td><td>290</td><td>2004</td><td>2828</td><td>828</td><td>724</td></tr>
+<tr><td><a href="https://github.com/mackstann/tinywm">tinywm</a></td><td>2011-11-27</td><td>2014-04-22</td><td></td><td>115</td><td>75.24</td><td>16.66</td><td>728</td><td>837</td><td>2588</td><td>4128</td><td>896</td><td>752</td></tr>
+<tr><td><a href="https://github.com/tudurom/windowchef">windowchef</a></td><td>2016-09-02</td><td>2021-02-21</td><td>libxcb-ewmh-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-randr0-dev</td><td>4483</td><td>925.34</td><td>62.17</td><td>456</td><td>549</td><td>2552</td><td>4392</td><td>1124</td><td>972</td></tr>
+<tr><td><a href="https://github.com/seanpringle/xoat">xoat</a></td><td>2012-08-30</td><td>2016-06-30</td><td>libxinerama-dev</td><td>2450</td><td>2089.06</td><td>59.92</td><td>2708</td><td>2922</td><td>5588</td><td>10844</td><td>4524</td><td>3752</td></tr>
 </table>
 <div id="correlogram"></div>
 <pre id="csvdata" hidden>
 sloc,make time (msec),binary size (K),USS,PSS,RSS,VIRT,RES,SHR
-3369,937.28,48.35,500,582,2300,7192,988,828,
-2694,346.85,70.40,1244,1349,3148,6556,3140,2804,
-951,432.69,36.46,700,813,2760,4140,968,828,
-2773,961.28,46.48,2972,3189,5836,10908,5772,4872,
-13476,1986.39,251.68,696,780,2620,5348,1004,824,
-1376,372.79,35.26,960,1078,2888,6316,2724,2456,
-594,98.41,29.38,724,828,2616,4136,968,828,
-1116,534.07,26.78,976,1102,3224,9508,3224,2912,
-1095,173.81,35.96,1052,1209,3492,9000,2752,2508,
-2505,879.66,68.16,2900,3127,6100,13852,5980,5092,
-3771,706.43,373.03,2948,3179,6124,14360,5564,4744,
-3018,279.93,139.27,460,558,2432,6368,996,820,
-99,85.31,17.02,204,283,2000,2824,828,724,
-5584,2320.79,131.53,1344,1545,4248,9816,4248,3764,
-5051,1152.04,128.41,1212,1413,4004,9740,3640,3256,
-815,99.85,34.41,784,892,2712,4140,2648,2396,
-3704,375.89,99.19,396,481,2240,2996,844,704,
-776,546.75,35.45,860,968,2808,4244,2760,2500,
-875,438.14,31.79,776,880,2680,4140,972,828,
-1553,298.42,30.23,996,1104,2976,6444,2888,2596,
-35325,4812.74,1029.08,3068,3300,6260,13988,6184,5288,
-3950,328.14,119.77,1496,1643,3832,13524,3832,3308,
-12789,13682.05,3815.20,1432,1688,5176,10348,4704,4388,
-423,187.77,27.53,940,1047,2832,6308,2648,2388,
-312,80.46,21.88,212,293,2024,2828,832,724,
-115,67.17,16.66,676,781,2576,4128,968,824,
-4483,892.51,62.17,456,548,2552,4392,1124,972,
-2450,1852.69,59.92,2688,2904,5680,10848,4692,3920,
+3369,868.75,48.35,504,596,2404,7192,996,832,
+2694,471.33,70.40,1232,1337,3136,6556,3128,2792,
+951,384.15,36.46,768,878,2628,4140,896,756,
+2773,845.97,46.48,2944,3159,5832,11040,5820,4908,
+13476,2142.34,251.68,696,777,2496,5348,996,820,
+1376,464.80,35.26,876,986,2944,6316,2832,2564,
+594,84.89,29.38,740,849,2720,4136,972,828,
+1116,517.40,26.78,976,1097,3052,9508,3052,2736,
+1095,182.33,35.96,1080,1219,3436,9000,2624,2384,
+2505,926.70,68.16,2956,3185,6144,13860,6020,5124,
+3771,722.05,373.03,2892,3119,6076,14360,5580,4764,
+3018,311.80,139.27,464,580,2652,6368,1064,884,
+99,90.90,17.02,208,290,2100,2824,832,724,
+5584,2467.72,131.53,1392,1588,4232,9816,4232,3752,
+5051,1003.06,128.41,1256,1451,4028,9740,3696,3308,
+815,117.21,34.41,748,857,2736,4140,2736,2484,
+3704,286.54,99.19,396,480,2280,2996,908,768,
+776,478.56,35.45,856,962,2804,4244,2752,2496,
+875,519.70,31.79,740,851,2728,4140,968,828,
+1553,375.35,30.23,1104,1208,2964,6444,2784,2488,
+35325,5049.69,1029.08,3000,3238,6348,13988,6288,5384,
+3950,433.29,119.77,1492,1642,3912,13524,3912,3396,
+12789,11369.02,3815.20,1444,1714,5236,10348,4716,4404,
+423,177.73,27.53,864,971,2812,6308,2724,2464,
+312,70.87,21.88,208,290,2004,2828,828,724,
+115,75.24,16.66,728,837,2588,4128,896,752,
+4483,925.34,62.17,456,549,2552,4392,1124,972,
+2450,2089.06,59.92,2708,2922,5588,10844,4524,3752,
 </pre>
 <script src="https://d3js.org/d3.v6.js"></script>
 <script src="script.js"></script>

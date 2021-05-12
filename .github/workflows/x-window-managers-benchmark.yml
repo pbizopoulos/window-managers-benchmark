@@ -30,7 +30,6 @@ jobs:
           - { name: matwm2, url: "https://github.com/segin/matwm2", dependencies: libxinerama-dev, premake: cd matwm2/ && ./configure , postmake: }
           - { name: maxwelm, url: "https://github.com/zsisco/maxwelm", dependencies: "", premake: "", postmake: }
           - { name: mcwm, url: "https://github.com/mchackorg/mcwm", dependencies: libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-util-dev, premake: "", postmake: }
-          - { name: mimicwm, url: "https://github.com/Aaron-Mann/mimicwm", dependencies: libxinerama-dev, premake: "", postmake: }
           - { name: monsterwm, url: "https://github.com/c00kiemon5ter/monsterwm", dependencies: "", premake: "", postmake: }
           - { name: ntwm, url: "https://github.com/Cubified/ntwm", dependencies: libxrandr-dev, premake: "", postmake: }
           - { name: ratpoison, url: "https://git.savannah.nongnu.org/git/ratpoison.git", dependencies: libxrandr-dev, premake: cd ratpoison && ./autogen.sh && ./configure , postmake: mv ratpoison/src/ratpoison ratpoison/ratpoison }
@@ -134,7 +133,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
       - name: download results
         uses: actions/download-artifact@v2
       - name: create index.html
